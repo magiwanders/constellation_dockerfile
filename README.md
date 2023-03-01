@@ -28,13 +28,13 @@ Tests available:
 - ```TLTestConfigXX``` where XX ranges from 00 to 06 -> TileLink protocol tests.
 - ```AXI4TestConfigXX``` where XX ranges from 00 to 03 -> AXI4 protocol tests.
 
-How to re-compile the above tests, assuming the container is already running:
+How to re-compile the above tests, assuming the container is NOT already running:
 
 ```
 make test name=<test_name>
 ```
 
-This will run the test and put a rendered visualization in the *./renders* folder.
+This will run the test and put a rendered visualization in the *./renders* folder. Afterwards, the user can use the container shell.
 
 ### Traffic Evaluation
 Evaluations available:
