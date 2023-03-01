@@ -3,7 +3,7 @@ Dockerfile for the [Constellation RTL NoC generator framework docker image](http
 
 Build an image:
 
-> WARNING: this builds the image with its current DockerHub name and version *magiwanders/constellation:x.x*. If you want to publish your own fork modify the first line of the Makerfile.
+> :warning: **This builds the image with its current DockerHub name and version `magiwanders/constellation:x.x`. If you want to publish your own fork modify the first line of the Makerfile.**
 
 ```
 make 
