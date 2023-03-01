@@ -7,7 +7,7 @@ docker container run --rm -it --name constellation magiwanders/constellation:0.1
 
 MAKE VISUALIZATION
 source /home/conda/etc/profile.d/conda.sh && \
-conda install networkx matplotlib && \
+conda install networkx matplotlib -y && \
 source /home/chipyard/env.sh && \
 cd /home/chipyard/generators/constellation/scripts && \
 sed 's/plt.show()/plt.savefig("noc_visualization.png")/' vis.py > vis.txt && \
