@@ -34,9 +34,6 @@ RUN source /home/conda/etc/profile.d/conda.sh && \
     make -C generators/constellation/src/main/resources/csrc/netrace netrace.o CFLAGS="-fPIC -O3"
     
 RUN pip install networkx matplotlib && \
-    cd /home/chipyard/generators/constellation/scripts && \
-    sed "s/plt.show()/plt.savefig('noc_visualization.png')/" vis.py > vis.txt && \
-    cp vis.txt vis.py && \
     echo 'source /home/conda/etc/profile.d/conda.sh && source /home/chipyard/env.sh' >> /root/.bashrc 
 
 WORKDIR /home
