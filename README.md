@@ -5,7 +5,7 @@ Build:
 ```docker image build -t magiwanders/constellation:<version> .```
 
 Run:
-```docker container run --rm -it --name constellation magiwanders/constellation:0.1 bash ```
+```docker container run --rm -it --name constellation magiwanders/constellation:<version> bash ```
 
 In order to retrieve the visualization:
 - Container: 
