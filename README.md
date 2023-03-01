@@ -28,7 +28,7 @@ Tests available:
 - ```TLTestConfigXX``` where XX ranges from 00 to 06 -> TileLink protocol tests.
 - ```AXI4TestConfigXX``` where XX ranges from 00 to 03 -> AXI4 protocol tests.
 
-How to re-compile the above tests, assuming the container is NOT already running:
+How to re-compile the above tests, assuming the container is NOT already running in the background:
 
 ```
 make test name=<test_name>
