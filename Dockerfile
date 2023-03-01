@@ -3,7 +3,6 @@ FROM ubuntu:lunar
 RUN apt-get update && \
     apt-get install build-essential cmake curl tar git verilator -y 
 
-
 RUN cd home && \
     curl -L https://github.com/chipsalliance/espresso/archive/refs/tags/v2.4.tar.gz | tar xvz && \
     cd espresso-2.4 && \ 
@@ -31,9 +30,14 @@ RUN source /home/conda/etc/profile.d/conda.sh && \
 RUN source /home/conda/etc/profile.d/conda.sh && \
     source /home/chipyard/env.sh && \
     cd /home/chipyard && \
-    make -C generators/constellation/src/main/resources/csrc/netrace netrace.o CFLAGS="-fPIC -O3" && \
-    cd /home/chipyard/sims/verilator && \
-    make SUB_PROJECT=constellation BINARY=none CONFIG=TestConfig00 run-binary-debug 
+    mkdir /home/user && \
+    make -C generators/constellation/src/main/resources/csrc/netrace netrace.o CFLAGS="-fPIC -O3"
+    
+RUN pip install networkx matplotlib && \
+    cd /home/chipyard/generators/constellation/scripts && \
+    sed "s/plt.show()/plt.savefig('noc_visualization.png')/" vis.py > vis.txt && \
+    cp vis.txt vis.py && \
+    echo 'source /home/conda/etc/profile.d/conda.sh && source /home/chipyard/env.sh' >> /root/.bashrc 
 
 WORKDIR /home
 

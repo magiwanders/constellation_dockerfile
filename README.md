@@ -1,24 +1,43 @@
-# constellation (Dockerfile)
-Dockerfile for the [Constellation RTL NoC generator framework docker image](https://hub.docker.com/r/magiwanders/constellation).
+# [Constellation](https://constellation.readthedocs.io/en/latest/index.html) Dockerfile
+Dockerfile for the [Constellation RTL NoC generator framework docker image](https://hub.docker.com/r/magiwanders/constellation). 
 
-Build:
-```docker image build -t magiwanders/constellation:<version> .```
+Build an image:
 
-Run:
-```docker container run --rm -it --name constellation magiwanders/constellation:0.1 bash ```
-
-In order to retrieve the visualization:
-- Container: 
-```
-conda install networkx matplotlib
-source /home/chipyard/env.sh 
-cd /home/chipyard/generators/constellation/scripts 
-sed 's/plt.show()/plt.savefig("noc_visualization.png")/' vis.py > vis.txt 
-cp vis.txt vis.py 
-python vis.py /home/chipyard/sims/verilator/generated-src/constellation.test.TestHarness.TestConfig00/constellation.test.TestHarness.TestConfig00.test.noc. 
+> WARNING: this builds the image with its current DockerHub name and version *magiwanders/constellation:x.x*. If you want to publish your own fork modify the first line of the Makerfile.
 
 ```
-- Host (with container running in the background):
+make 
 ```
-docker cp constellation:/home/chipyard/generators/constellation/scripts/noc_visualization.png .
+
+Create non-volatile container and run it:
+
 ```
+make container
+make start
+```
+
+Remove container:
+```make clean```
+
+Remove container and image:
+```make uninstall```
+
+### Testing
+Tests available:
+- ```TestConfigXX``` where XX ranges from 00 to 72 -> functional correctness tests.
+- ```TLTestConfigXX``` where XX ranges from 00 to 06 -> TileLink protocol tests.
+- ```AXI4TestConfigXX``` where XX ranges from 00 to 03 -> AXI4 protocol tests.
+
+How to re-compile the above tests:
+
+```
+make test name=<test_name>
+```
+
+This will compile the test, put a rendered image in the ./renders folder and get into the shell of the container afterwards.
+
+### Traffic Evaluation
+Evaluations available:
+- ```EvalTestConfigXX``` where XX tanges from 00 to 08.
+
+TODO
