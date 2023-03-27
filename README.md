@@ -6,7 +6,7 @@ Build an image:
 > :warning: **This builds the image with its current DockerHub name and version `magiwanders/constellation:x.x`. If you want to publish your own fork modify the first line of the Makefile.**
 
 ```
-make 
+make all
 ```
 
 Create non-volatile container and run it:

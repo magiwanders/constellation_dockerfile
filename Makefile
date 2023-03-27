@@ -10,7 +10,7 @@ container:
 start:
 	docker container start -i constellation
 
-test:
+test: 
 	docker container start constellation
 	docker exec constellation bash -c "cd /home/chipyard/sims/verilator && \
 		source /home/conda/etc/profile.d/conda.sh && \
