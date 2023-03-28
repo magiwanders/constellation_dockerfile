@@ -1,6 +1,11 @@
 version=magiwanders/constellation:0.3
 
-all:
+default: help
+
+help:
+	cat README.md
+
+build:
 	docker image build -t $(version) .
 	
 container: 
